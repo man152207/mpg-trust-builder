@@ -41,6 +41,7 @@ const AdminDashboard = () => {
               <Route path="pages" element={<PagesManager />} />
               <Route path="submissions" element={<SubmissionsViewer />} />
               <Route path="faqs" element={<FAQManager />} />
+              <Route path="blog" element={<BlogManager />} />
               <Route path="settings" element={<SettingsPage />} />
             </Routes>
           </div>
