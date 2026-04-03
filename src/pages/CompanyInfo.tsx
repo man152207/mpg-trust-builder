@@ -3,14 +3,14 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/content";
-import { Shield, ArrowRight, Phone } from "lucide-react";
+import { Shield, ArrowRight, Phone, CheckCircle } from "lucide-react";
 
 const CompanyInfo = () => {
   return (
     <Layout>
       <SEO
         title="Business Verification & Company Information"
-        description="Verify MPG Solution LLC's business information. Wyoming-registered digital advertising company — legal name, address, and business details."
+        description="Verify MPG Solution LLC's business information. Wyoming-registered digital marketing company — legal name, address, and business details."
         path="/company-info"
       />
 
@@ -38,10 +38,6 @@ const CompanyInfo = () => {
                   { label: "Official Email", value: COMPANY.email, isEmail: true },
                   { label: "Official Phone", value: COMPANY.phone, isPhone: true },
                   { label: "Nature of Business", value: COMPANY.nature },
-                  {
-                    label: "Services Offered",
-                    value: "Facebook Advertising, Instagram Advertising, Creative Strategy, Ad Copywriting, Creative Design for Ads, Audience Targeting, Campaign Setup & Optimization, Lead Generation Campaigns, E-commerce Advertising Support, Landing Page & Creative Support",
-                  },
                 ].map((item) => (
                   <div key={item.label} className="border-b border-border pb-4 last:border-0 last:pb-0">
                     <dt className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">{item.label}</dt>
@@ -56,6 +52,38 @@ const CompanyInfo = () => {
                     </dd>
                   </div>
                 ))}
+
+                <div className="border-b border-border pb-4">
+                  <dt className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Core Services</dt>
+                  <dd>
+                    <ul className="grid gap-1.5 sm:grid-cols-2 text-sm text-muted-foreground">
+                      {[
+                        "Social Media Marketing Strategy",
+                        "Meta Ads Management",
+                        "Facebook & Instagram Advertising",
+                        "Performance Marketing Strategy",
+                        "Lead Generation Campaigns",
+                        "Creative Strategy & Campaign Planning",
+                        "Ad Copywriting & Creative Design",
+                        "Audience Targeting & Optimization",
+                        "Remarketing & Retargeting",
+                        "Marketing Consultation",
+                      ].map((s) => (
+                        <li key={s} className="flex items-start gap-1.5">
+                          <CheckCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+
+                <div>
+                  <dt className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Company Description</dt>
+                  <dd className="text-sm text-muted-foreground leading-relaxed">
+                    MPG Solution LLC is a Wyoming-registered digital marketing company providing strategic marketing services to businesses. Our services include social media marketing strategy, Meta Ads management, paid social campaigns, creative strategy, lead generation, and performance marketing support.
+                  </dd>
+                </div>
               </div>
 
               <div className="mt-8 rounded-xl bg-accent p-4 text-center">

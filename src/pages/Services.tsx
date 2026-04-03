@@ -4,11 +4,17 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SERVICES } from "@/lib/content";
-import { ArrowRight, Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout as LayoutIcon } from "lucide-react";
+import {
+  ArrowRight, Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings,
+  Users, ShoppingCart, Layout as LayoutIcon, Share2, Megaphone, Lightbulb,
+  RefreshCw, Filter, MessageCircle, ClipboardCheck, Type
+} from "lucide-react";
 import servicesVisual from "@/assets/services-visual.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
-  Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout: LayoutIcon,
+  Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users,
+  ShoppingCart, Layout: LayoutIcon, Share2, Megaphone, Lightbulb,
+  RefreshCw, Filter, MessageCircle, ClipboardCheck, Type,
 };
 
 const Services = () => {
@@ -16,7 +22,7 @@ const Services = () => {
     <Layout>
       <SEO
         title="Services"
-        description="Explore MPG Solution LLC's digital advertising services including Facebook Ads, Instagram Ads, performance marketing, creative design, and lead generation."
+        description="Explore MPG Solution LLC's digital marketing services including social media strategy, Meta Ads management, Facebook & Instagram advertising, creative strategy, lead generation, and more."
         path="/services"
       />
 
@@ -26,13 +32,16 @@ const Services = () => {
             <div>
               <h1 className="mb-4 text-4xl font-bold text-foreground">Our Services</h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                End-to-end digital advertising services designed to help your business reach, engage, and convert your ideal customers.
+                End-to-end digital marketing services designed to help your business reach, engage, and convert your ideal customers — from strategy and creative to campaign management and optimization.
+              </p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">{SERVICES.length} services</span> across strategy, creative, paid campaigns, and growth support.
               </p>
             </div>
             <div className="hidden lg:block overflow-hidden rounded-2xl">
               <img
                 src={servicesVisual}
-                alt="Digital advertising services overview"
+                alt="Digital marketing services overview"
                 width={1280}
                 height={640}
                 loading="lazy"
@@ -93,7 +102,7 @@ const Services = () => {
             Need a Custom Solution?
           </h2>
           <p className="mb-6 text-primary-foreground/80">
-            Every business is different. Let's build a strategy tailored to your goals.
+            Every business is different. Let's build a marketing strategy tailored to your goals.
           </p>
           <Button size="lg" variant="secondary" asChild>
             <Link to="/contact">Request a Proposal <ArrowRight className="ml-1 h-4 w-4" /></Link>

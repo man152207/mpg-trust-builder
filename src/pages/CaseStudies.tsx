@@ -12,7 +12,7 @@ const CaseStudies = () => {
     <Layout>
       <SEO
         title="Case Studies"
-        description="See how MPG Solution LLC has helped businesses improve their digital advertising results through strategic campaigns."
+        description="See how MPG Solution LLC has helped businesses improve their digital marketing results through strategic campaigns, creative strategy, and performance optimization."
         path="/case-studies"
       />
 
@@ -21,7 +21,7 @@ const CaseStudies = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold text-foreground">Case Studies</h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A look at how we've helped businesses improve their advertising performance through strategic campaign management.
+              A look at how we've helped businesses improve their marketing performance through strategic campaign management and creative optimization.
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ const CaseStudies = () => {
             Let's Create Your Success Story
           </h2>
           <p className="mb-6 text-primary-foreground/80">
-            Ready to see what strategic digital advertising can do for your business?
+            Ready to see what strategic digital marketing can do for your business?
           </p>
           <Button size="lg" variant="secondary" asChild>
             <Link to="/contact">Start a Conversation <ArrowRight className="ml-1 h-4 w-4" /></Link>

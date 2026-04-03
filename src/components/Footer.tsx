@@ -22,11 +22,12 @@ const Footer = () => {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/services" className="hover:text-primary transition-colors">Social Media Strategy</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Meta Ads Management</Link></li>
               <li><Link to="/services" className="hover:text-primary transition-colors">Facebook Advertising</Link></li>
               <li><Link to="/services" className="hover:text-primary transition-colors">Instagram Advertising</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Performance Marketing</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Ad Copywriting</Link></li>
               <li><Link to="/services" className="hover:text-primary transition-colors">Lead Generation</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Creative Strategy</Link></li>
             </ul>
           </div>
 

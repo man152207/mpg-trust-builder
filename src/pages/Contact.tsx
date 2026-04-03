@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { COMPANY, SERVICES } from "@/lib/content";
-import { MapPin, Mail, Globe, Phone, CheckCircle } from "lucide-react";
+import { MapPin, Mail, Globe, Phone, CheckCircle, ArrowRight, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -34,7 +34,7 @@ const Contact = () => {
     <Layout>
       <SEO
         title="Contact Us"
-        description="Get in touch with MPG Solution LLC for a consultation about your digital advertising needs. Request a quote or book a call."
+        description="Get in touch with MPG Solution LLC for a consultation about your digital marketing needs. Request a quote or book a call."
         path="/contact"
       />
 
@@ -43,7 +43,7 @@ const Contact = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold text-foreground">Contact Us</h1>
             <p className="text-lg text-muted-foreground">
-              Ready to discuss your digital advertising goals? Send us an inquiry and we'll get back to you promptly.
+              Ready to discuss your digital marketing goals? Send us an inquiry and we'll get back to you promptly.
             </p>
           </div>
         </div>
@@ -58,8 +58,12 @@ const Contact = () => {
                 <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-12 text-center">
                   <CheckCircle className="mb-4 h-12 w-12 text-primary" />
                   <h2 className="mb-2 text-2xl font-bold text-foreground">Thank You</h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground mb-4">
                     Your inquiry has been received. We'll review your message and get back to you within one business day.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    If you need immediate assistance, call us at{" "}
+                    <a href={`tel:${COMPANY.phone}`} className="text-primary hover:underline">{COMPANY.phone}</a>.
                   </p>
                 </div>
               ) : (
@@ -115,7 +119,7 @@ const Contact = () => {
                     </label>
                   </div>
                   <Button type="submit" disabled={loading} size="lg">
-                    {loading ? "Sending..." : "Send Inquiry"}
+                    {loading ? "Sending..." : "Send Inquiry"} {!loading && <ArrowRight className="ml-1 h-4 w-4" />}
                   </Button>
                 </form>
               )}
@@ -146,9 +150,20 @@ const Contact = () => {
               </div>
               <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-2 text-lg font-semibold text-foreground">Response Time</h3>
-                <p className="text-sm text-muted-foreground">
-                  We typically respond to all inquiries within one business day. For urgent matters, please indicate the priority in your message.
+                <p className="text-sm text-muted-foreground mb-3">
+                  We typically respond to all inquiries within one business day.
                 </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-2 text-lg font-semibold text-foreground flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-primary" /> What Happens Next
+                </h3>
+                <ol className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex gap-2"><span className="font-semibold text-primary">1.</span> We review your inquiry</li>
+                  <li className="flex gap-2"><span className="font-semibold text-primary">2.</span> We schedule a discovery call</li>
+                  <li className="flex gap-2"><span className="font-semibold text-primary">3.</span> We present a tailored proposal</li>
+                  <li className="flex gap-2"><span className="font-semibold text-primary">4.</span> We begin building your strategy</li>
+                </ol>
               </div>
             </div>
           </div>
