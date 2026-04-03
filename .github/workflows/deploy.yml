@@ -36,7 +36,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: dist/
-          server-dir: /adsmpg.com/
+          server-dir: /
           exclude: |
             **/.git*
             **/.github*
