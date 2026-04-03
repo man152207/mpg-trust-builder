@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CASE_STUDIES } from "@/lib/content";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase, Target, Lightbulb, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const CaseStudies = () => {
@@ -31,30 +31,42 @@ const CaseStudies = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="space-y-8">
             {CASE_STUDIES.map((cs) => (
-              <Card key={cs.id} className="border-border">
+              <Card key={cs.id} className="border-border overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/5">
                 <CardContent className="p-6 lg:p-8">
                   <div className="mb-4 flex flex-wrap gap-2">
-                    <Badge variant="secondary">{cs.industry}</Badge>
+                    <Badge className="bg-accent text-accent-foreground border-0">{cs.industry}</Badge>
                     {cs.platforms.map((p) => (
                       <Badge key={p} variant="outline">{p}</Badge>
                     ))}
                   </div>
-                  <h2 className="mb-3 text-2xl font-bold text-foreground">{cs.title}</h2>
+                  <h2 className="mb-4 text-2xl font-bold text-foreground">{cs.title}</h2>
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                    <div>
-                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Objective</h4>
+                    <div className="rounded-lg bg-card border border-border p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <Target className="h-4 w-4 text-primary" />
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary">Objective</h4>
+                      </div>
                       <p className="text-sm text-muted-foreground">{cs.objective}</p>
                     </div>
-                    <div>
-                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Solution</h4>
+                    <div className="rounded-lg bg-card border border-border p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <Lightbulb className="h-4 w-4 text-primary" />
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary">Solution</h4>
+                      </div>
                       <p className="text-sm text-muted-foreground">{cs.solution}</p>
                     </div>
-                    <div>
-                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Services</h4>
+                    <div className="rounded-lg bg-card border border-border p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <Briefcase className="h-4 w-4 text-primary" />
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary">Services</h4>
+                      </div>
                       <p className="text-sm text-muted-foreground">{cs.services.join(", ")}</p>
                     </div>
-                    <div>
-                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Result</h4>
+                    <div className="rounded-lg bg-accent p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4 text-primary" />
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary">Result</h4>
+                      </div>
                       <p className="text-sm font-medium text-foreground">{cs.result}</p>
                     </div>
                   </div>

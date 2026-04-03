@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { COMPANY, SERVICES } from "@/lib/content";
-import { MapPin, Mail, Globe, CheckCircle } from "lucide-react";
+import { MapPin, Mail, Globe, Phone, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -24,7 +24,6 @@ const Contact = () => {
       return;
     }
     setLoading(true);
-    // Simulate submission
     setTimeout(() => {
       setSubmitted(true);
       setLoading(false);
@@ -56,7 +55,7 @@ const Contact = () => {
             {/* Form */}
             <div className="lg:col-span-2">
               {submitted ? (
-                <div className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-12 text-center">
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-12 text-center">
                   <CheckCircle className="mb-4 h-12 w-12 text-primary" />
                   <h2 className="mb-2 text-2xl font-bold text-foreground">Thank You</h2>
                   <p className="text-muted-foreground">
@@ -124,12 +123,16 @@ const Contact = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <div className="rounded-xl border border-border bg-card p-6">
+              <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-4 text-lg font-semibold text-foreground">Business Contact</h3>
                 <ul className="space-y-4 text-sm text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <span>{COMPANY.address}</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Phone className="h-4 w-4 shrink-0 text-primary" />
+                    <a href={`tel:${COMPANY.phone}`} className="text-primary hover:underline">{COMPANY.phone}</a>
                   </li>
                   <li className="flex items-center gap-3">
                     <Mail className="h-4 w-4 shrink-0 text-primary" />
@@ -141,7 +144,7 @@ const Contact = () => {
                   </li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-border bg-card p-6">
+              <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-2 text-lg font-semibold text-foreground">Response Time</h3>
                 <p className="text-sm text-muted-foreground">
                   We typically respond to all inquiries within one business day. For urgent matters, please indicate the priority in your message.
