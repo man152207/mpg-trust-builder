@@ -57,6 +57,7 @@ const defaultPages: Record<string, PageStatus> = {
   privacy: { status: "published", lastEdited: new Date().toISOString(), slug: "/privacy", metaTitle: "Privacy Policy", metaDescription: "Our privacy policy." },
   terms: { status: "published", lastEdited: new Date().toISOString(), slug: "/terms", metaTitle: "Terms & Conditions", metaDescription: "Terms of service." },
   cookies: { status: "published", lastEdited: new Date().toISOString(), slug: "/cookies", metaTitle: "Cookie Policy", metaDescription: "Cookie usage policy." },
+  blog: { status: "published", lastEdited: new Date().toISOString(), slug: "/blog", metaTitle: "Blog — Digital Marketing Insights", metaDescription: "Expert digital marketing insights and strategies." },
 };
 
 const defaultState: CMSState = {
