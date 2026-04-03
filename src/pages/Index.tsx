@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { COMPANY, SERVICES, CASE_STUDIES, FAQS } from "@/lib/content";
+import { BLOG_POSTS } from "@/lib/blog-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   Facebook, Instagram, TrendingUp, PenTool, Target, Users, Share2, Megaphone,
