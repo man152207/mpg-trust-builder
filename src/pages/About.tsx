@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/content";
-import { CheckCircle, ArrowRight, Phone } from "lucide-react";
+import { CheckCircle, ArrowRight, Phone, Building2, Globe, Users, Target } from "lucide-react";
 import aboutVisual from "@/assets/about-visual.jpg";
 
 const About = () => {
@@ -11,7 +11,7 @@ const About = () => {
     <Layout>
       <SEO
         title="About Us"
-        description="Learn about MPG Solution LLC — a Wyoming-registered digital advertising company providing Facebook & Instagram advertising and marketing services."
+        description="Learn about MPG Solution LLC — a digital marketing company providing social media marketing, Meta Ads management, creative strategy, and performance marketing services."
         path="/about"
       />
 
@@ -21,7 +21,7 @@ const About = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold text-foreground">About MPG Solution LLC</h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We help businesses grow through strategic, data-driven digital advertising on Facebook and Instagram.
+              We help businesses grow through strategic, performance-focused digital marketing — from social media campaigns and creative strategy to lead generation and conversion optimization.
             </p>
           </div>
         </div>
@@ -34,16 +34,16 @@ const About = () => {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-foreground">Who We Are</h2>
               <p className="text-muted-foreground leading-relaxed">
-                MPG Solution LLC is a digital advertising and marketing services company registered in Wyoming, USA. We specialize in helping businesses leverage the power of social media advertising — primarily Facebook and Instagram — to reach their ideal customers, generate qualified leads, and increase revenue.
+                MPG Solution LLC is a digital marketing company registered in Wyoming, USA. We specialize in helping businesses leverage the power of strategic marketing — including social media advertising, Meta Ads management, creative strategy, and performance-focused campaigns — to reach their ideal customers, generate qualified leads, and increase revenue.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our team brings together expertise in performance marketing strategy, creative design, ad copywriting, and audience targeting to deliver campaigns that are not just visually compelling but strategically sound and results-oriented.
+                Our team brings together expertise in digital marketing strategy, campaign management, creative design, ad copywriting, and audience targeting to deliver marketing that is not just visually compelling but strategically sound and results-oriented.
               </p>
             </div>
             <div className="overflow-hidden rounded-2xl shadow-lg">
               <img
                 src={aboutVisual}
-                alt="MPG Solution team working on digital advertising campaigns"
+                alt="MPG Solution team working on digital marketing campaigns"
                 width={1280}
                 height={640}
                 loading="lazy"
@@ -54,20 +54,48 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission */}
+      {/* How We Support Businesses */}
       <section className="border-y border-border bg-card py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="mb-4 text-2xl font-bold text-foreground">How We Support Businesses</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We focus on digital marketing work that directly impacts business growth — strategy, creative, paid campaigns, and optimization.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Target, title: "Strategy", desc: "Custom marketing strategies built around your business goals and audience." },
+              { icon: Building2, title: "Campaign Management", desc: "Full-service management of paid social campaigns with ongoing optimization." },
+              { icon: Users, title: "Lead Generation", desc: "Structured campaigns designed to deliver qualified leads consistently." },
+              { icon: Globe, title: "Creative & Messaging", desc: "Compelling ad creatives, copywriting, and brand messaging support." },
+            ].map((item) => (
+              <div key={item.title} className="rounded-xl border border-border bg-background p-6 text-center">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
+                  <item.icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="mb-2 text-sm font-semibold text-foreground">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-4 text-2xl font-bold text-foreground">Our Mission</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              To provide businesses with clear, effective, and measurable digital advertising solutions that drive real growth — delivered with transparency, expertise, and a genuine commitment to our clients' success.
+              To provide businesses with clear, effective, and measurable digital marketing solutions that drive real growth — delivered with transparency, expertise, and a genuine commitment to our clients' success.
             </p>
           </div>
         </div>
       </section>
 
       {/* Industries & Differentiators */}
-      <section className="py-16 lg:py-20">
+      <section className="border-y border-border bg-card py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
@@ -81,6 +109,7 @@ const About = () => {
                   "Real estate and property",
                   "Education and coaching",
                   "Hospitality and travel",
+                  "Startups and growing businesses",
                 ].map((industry) => (
                   <li key={industry} className="flex items-center gap-2 text-muted-foreground">
                     <CheckCircle className="h-4 w-4 shrink-0 text-primary" />
@@ -94,11 +123,12 @@ const About = () => {
               <ul className="space-y-3">
                 {[
                   "Performance-first approach — every campaign is optimized for results",
-                  "Full-service creative and strategy support",
+                  "Full-service creative, strategy, and campaign support",
                   "Transparent reporting with no hidden metrics",
                   "Custom strategies tailored to each client's goals",
                   "Continuous optimization throughout campaign lifecycle",
                   "Clear, professional communication at every step",
+                  "Broader digital marketing support beyond just ad management",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -112,9 +142,9 @@ const About = () => {
       </section>
 
       {/* Company Info Block */}
-      <section className="border-t border-border bg-card py-16 lg:py-20">
+      <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-background p-8 shadow-sm">
+          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-card p-8 shadow-sm">
             <h3 className="mb-6 text-lg font-semibold text-foreground text-center">Company Information</h3>
             <div className="space-y-4 text-sm">
               {[
@@ -123,9 +153,10 @@ const About = () => {
                 { label: "Phone", value: COMPANY.phone, isLink: `tel:${COMPANY.phone}` },
                 { label: "Email", value: COMPANY.email, isLink: `mailto:${COMPANY.email}` },
                 { label: "Website", value: COMPANY.website },
+                { label: "Nature of Business", value: COMPANY.nature },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
-                  <span className="font-medium text-foreground w-32 shrink-0">{item.label}</span>
+                  <span className="font-medium text-foreground w-36 shrink-0">{item.label}</span>
                   {item.isLink ? (
                     <a href={item.isLink} className="text-primary hover:underline">{item.value}</a>
                   ) : (
@@ -133,6 +164,9 @@ const About = () => {
                   )}
                 </div>
               ))}
+            </div>
+            <div className="mt-6 pt-4 border-t border-border text-center">
+              <p className="text-xs text-muted-foreground">{COMPANY.owner}</p>
             </div>
           </div>
         </div>
@@ -145,7 +179,7 @@ const About = () => {
             Ready to Work Together?
           </h2>
           <p className="mb-6 text-primary-foreground/80">
-            Get in touch to discuss how we can help grow your business.
+            Get in touch to discuss how we can help grow your business through digital marketing.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button size="lg" variant="secondary" asChild>

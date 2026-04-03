@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { PRICING_PLANS } from "@/lib/content";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Pricing = () => {
@@ -12,7 +12,7 @@ const Pricing = () => {
     <Layout>
       <SEO
         title="Pricing & Plans"
-        description="Explore MPG Solution LLC's transparent pricing plans for digital advertising services. From startup to enterprise, find the right plan for your business."
+        description="Explore MPG Solution LLC's transparent pricing plans for digital marketing services. From startup to enterprise, find the right plan for your business."
         path="/pricing"
       />
 
@@ -21,7 +21,7 @@ const Pricing = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold text-foreground">Pricing & Plans</h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Clear, straightforward pricing for professional digital advertising services. Choose the plan that fits your growth stage.
+              Clear, straightforward pricing for professional digital marketing services. Choose the plan that fits your growth stage.
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ const Pricing = () => {
               <Card
                 key={plan.id}
                 className={cn(
-                  "border-border relative",
+                  "border-border relative flex flex-col",
                   plan.popular && "border-primary ring-2 ring-primary"
                 )}
               >
@@ -51,8 +51,15 @@ const Pricing = () => {
                     {plan.period && <span className="text-muted-foreground">{plan.period}</span>}
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-2">
+                <CardContent className="flex flex-1 flex-col space-y-4">
+                  {plan.bestFor && (
+                    <div className="rounded-lg bg-accent/50 p-3">
+                      <p className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">Best for:</span> {plan.bestFor}
+                      </p>
+                    </div>
+                  )}
+                  <ul className="flex-1 space-y-2">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -68,10 +75,21 @@ const Pricing = () => {
             ))}
           </div>
 
-          <div className="mx-auto mt-12 max-w-2xl rounded-xl border border-border bg-card p-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Note:</strong> All plans cover service and management fees only. Advertising spend (budget paid to Facebook/Instagram) is separate and determined based on your goals. Custom quotes are available for businesses with specific requirements.
-            </p>
+          <div className="mx-auto mt-12 max-w-2xl space-y-4">
+            <div className="rounded-xl border border-border bg-card p-6 text-center">
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-foreground">Note:</strong> All plans cover service and management fees only. Advertising spend (budget paid to Facebook/Instagram) is separate and determined based on your goals. Custom quotes are available for businesses with specific requirements.
+              </p>
+            </div>
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-card p-6">
+              <Info className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <h4 className="text-sm font-semibold text-foreground mb-1">Getting Started</h4>
+                <p className="text-sm text-muted-foreground">
+                  After signing up, we begin with a discovery call to understand your business, followed by strategy development, and campaign launch — typically within 5 to 10 business days.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

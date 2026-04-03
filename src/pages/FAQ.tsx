@@ -11,7 +11,7 @@ const FAQ = () => {
     <Layout>
       <SEO
         title="Frequently Asked Questions"
-        description="Find answers to common questions about MPG Solution LLC's digital advertising services, pricing, process, and more."
+        description="Find answers to common questions about MPG Solution LLC's digital marketing services, pricing, process, and more."
         path="/faq"
       />
 
@@ -20,7 +20,7 @@ const FAQ = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold text-foreground">Frequently Asked Questions</h1>
             <p className="text-lg text-muted-foreground">
-              Answers to the most common questions about our services and process.
+              Answers to the most common questions about our digital marketing services and process.
             </p>
           </div>
         </div>
