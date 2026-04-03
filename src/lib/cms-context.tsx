@@ -42,6 +42,7 @@ interface CMSContextType {
   updateContactInfo: (info: CMSState["contactInfo"]) => void;
   updateFaqs: (faqs: typeof FAQS) => void;
   togglePageStatus: (slug: string) => void;
+  updateBlogPosts: (posts: BlogPost[]) => void;
 }
 
 const defaultPages: Record<string, PageStatus> = {
