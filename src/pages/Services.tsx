@@ -1,0 +1,94 @@
+import { Link } from "react-router-dom";
+import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { SERVICES } from "@/lib/content";
+import { ArrowRight, Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout as LayoutIcon } from "lucide-react";
+
+const iconMap: Record<string, React.ElementType> = {
+  Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout: LayoutIcon,
+};
+
+const Services = () => {
+  return (
+    <Layout>
+      <SEO
+        title="Services"
+        description="Explore MPG Solution LLC's digital advertising services including Facebook Ads, Instagram Ads, performance marketing, creative design, and lead generation."
+        path="/services"
+      />
+
+      <section className="border-b border-border bg-card py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="mb-4 text-4xl font-bold text-foreground">Our Services</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              End-to-end digital advertising services designed to help your business reach, engage, and convert your ideal customers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="space-y-8">
+            {SERVICES.map((service, i) => {
+              const Icon = iconMap[service.icon] || Target;
+              return (
+                <Card key={service.id} className="border-border overflow-hidden">
+                  <CardContent className="p-6 lg:p-8">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                        <Icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <div className="flex-1 space-y-4">
+                        <h2 className="text-2xl font-bold text-foreground">{service.title}</h2>
+                        <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                        <div className="grid gap-4 sm:grid-cols-3">
+                          <div>
+                            <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Who It's For</h4>
+                            <p className="text-sm text-muted-foreground">{service.forWhom}</p>
+                          </div>
+                          <div>
+                            <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Expected Benefit</h4>
+                            <p className="text-sm text-muted-foreground">{service.benefit}</p>
+                          </div>
+                          <div>
+                            <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Our Approach</h4>
+                            <p className="text-sm text-muted-foreground">{service.approach}</p>
+                          </div>
+                        </div>
+                        <Button asChild>
+                          <Link to="/contact">
+                            Get Started <ArrowRight className="ml-1 h-4 w-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-14">
+        <div className="container mx-auto px-4 text-center lg:px-8">
+          <h2 className="mb-4 text-2xl font-bold text-primary-foreground">
+            Need a Custom Solution?
+          </h2>
+          <p className="mb-6 text-primary-foreground/80">
+            Every business is different. Let's build a strategy tailored to your goals.
+          </p>
+          <Button size="lg" variant="secondary" asChild>
+            <Link to="/contact">Request a Proposal <ArrowRight className="ml-1 h-4 w-4" /></Link>
+          </Button>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default Services;
