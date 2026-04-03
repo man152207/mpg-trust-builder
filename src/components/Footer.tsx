@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { COMPANY } from "@/lib/content";
-import { Mail, MapPin, Globe } from "lucide-react";
+import { Mail, MapPin, Globe, Phone } from "lucide-react";
+import mpgLogo from "@/assets/mpg-logo.png";
 
 const Footer = () => {
   return (
@@ -9,14 +10,9 @@ const Footer = () => {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-xs font-bold text-primary-foreground">M</span>
-              </div>
-              <span className="text-lg font-bold text-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                MPG Solution
-              </span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img src={mpgLogo} alt="MPG Solution" className="h-9 w-auto" />
+            </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {COMPANY.description}
             </p>
@@ -53,6 +49,10 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>{COMPANY.address}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <a href={`tel:${COMPANY.phone}`} className="hover:text-primary transition-colors">{COMPANY.phone}</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-primary" />

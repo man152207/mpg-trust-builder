@@ -14,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import mpgLogo from "@/assets/mpg-logo.png";
 
 // Admin shell
 const AdminDashboard = () => {
@@ -63,10 +64,8 @@ const AdminSidebar = () => {
     <aside className="hidden w-56 shrink-0 border-r border-border bg-card lg:block">
       <div className="flex h-14 items-center border-b border-border px-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded bg-primary">
-            <span className="text-xs font-bold text-primary-foreground">M</span>
-          </div>
-          <span className="text-sm font-bold">Admin</span>
+          <img src={mpgLogo} alt="MPG Solution" className="h-7 w-auto" />
+          <span className="text-sm font-bold text-muted-foreground">Admin</span>
         </Link>
       </div>
       <nav className="space-y-1 p-3">
@@ -78,7 +77,7 @@ const AdminSidebar = () => {
               to={link.to}
               className={cn(
                 "flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
-                active ? "bg-primary/10 text-primary font-medium" : "text-muted-foreground hover:bg-muted"
+                active ? "bg-accent text-primary font-medium" : "text-muted-foreground hover:bg-muted"
               )}
             >
               <link.icon className="h-4 w-4" />
@@ -306,11 +305,12 @@ const SettingsPage = () => {
   const { state, updateContactInfo } = useCMS();
   const { toast } = useToast();
   const [email, setEmail] = useState(state.contactInfo.email);
+  const [phone, setPhone] = useState(state.contactInfo.phone || "+1 315 961 3832");
   const [address, setAddress] = useState(state.contactInfo.address);
   const [website, setWebsite] = useState(state.contactInfo.website);
 
   const handleSave = () => {
-    updateContactInfo({ email, address, website });
+    updateContactInfo({ email, phone, address, website });
     toast({ title: "Settings saved" });
   };
 
@@ -323,6 +323,10 @@ const SettingsPage = () => {
           <div>
             <label className="mb-1 block text-sm font-medium">Email</label>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium">Phone</label>
+            <Input value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Address</label>

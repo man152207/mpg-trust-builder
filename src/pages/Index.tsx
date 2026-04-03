@@ -7,8 +7,9 @@ import { COMPANY, SERVICES, CASE_STUDIES, FAQS } from "@/lib/content";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   Facebook, Instagram, TrendingUp, PenTool, Target, Users,
-  CheckCircle, ArrowRight, Shield, Zap, BarChart3, MessageSquare
+  CheckCircle, ArrowRight, Shield, Zap, BarChart3, MessageSquare, Phone
 } from "lucide-react";
+import heroVisual from "@/assets/hero-visual.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
   Facebook, Instagram, TrendingUp, PenTool, Target, Users,
@@ -27,30 +28,53 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3" />
-        <div className="container relative mx-auto px-4 py-20 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground">
-              <Shield className="h-3.5 w-3.5 text-primary" />
-              Wyoming-Registered Digital Advertising Company
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/30" />
+        <div className="container relative mx-auto px-4 py-16 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground">
+                <Shield className="h-3.5 w-3.5 text-primary" />
+                Wyoming-Registered Digital Advertising Company
+              </div>
+              <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-[3.25rem]">
+                Scale Your Business with Strategic{" "}
+                <span className="text-primary">Facebook & Instagram</span>{" "}
+                Advertising
+              </h1>
+              <p className="mb-8 text-lg text-muted-foreground leading-relaxed">
+                Data-driven ad campaigns, compelling creatives, and precision targeting that deliver measurable growth for your business.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button size="lg" asChild>
+                  <Link to="/contact">
+                    Get a Quote <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/services">View Services</Link>
+                </Button>
+              </div>
+              <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
+                <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-1.5 hover:text-primary transition-colors">
+                  <Phone className="h-4 w-4 text-primary" />
+                  {COMPANY.phone}
+                </a>
+                <span className="text-border">|</span>
+                <a href={`mailto:${COMPANY.email}`} className="hover:text-primary transition-colors">
+                  {COMPANY.email}
+                </a>
+              </div>
             </div>
-            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              Scale Your Business with Strategic{" "}
-              <span className="text-primary">Facebook & Instagram</span>{" "}
-              Advertising
-            </h1>
-            <p className="mb-8 text-lg text-muted-foreground leading-relaxed md:text-xl">
-              Data-driven ad campaigns, compelling creatives, and precision targeting that deliver measurable growth for your business.
-            </p>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">
-                  Get a Quote <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/services">View Services</Link>
-              </Button>
+            <div className="relative hidden lg:block">
+              <div className="overflow-hidden rounded-2xl shadow-2xl shadow-primary/10">
+                <img
+                  src={heroVisual}
+                  alt="Digital advertising analytics dashboard"
+                  width={1280}
+                  height={720}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -66,7 +90,9 @@ const Index = () => {
             { icon: MessageSquare, label: "Dedicated Support", sub: "Responsive Communication" },
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center text-center">
-              <item.icon className="mb-2 h-6 w-6 text-primary" />
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
+                <item.icon className="h-5 w-5 text-primary" />
+              </div>
               <p className="text-sm font-semibold text-foreground">{item.label}</p>
               <p className="text-xs text-muted-foreground">{item.sub}</p>
             </div>
@@ -87,9 +113,9 @@ const Index = () => {
             {coreServices.map((service) => {
               const Icon = iconMap[service.icon] || Target;
               return (
-                <Card key={service.id} className="group border-border transition-shadow hover:shadow-md">
+                <Card key={service.id} className="group border-border transition-all hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
                   <CardContent className="p-6">
-                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
                     <h3 className="mb-2 text-lg font-semibold text-foreground">{service.title}</h3>
@@ -158,8 +184,8 @@ const Index = () => {
               { step: "02", title: "Launch & Execute", desc: "We set up campaigns, produce creatives, configure targeting, and launch across your chosen platforms." },
               { step: "03", title: "Optimize & Report", desc: "We continuously monitor performance, make data-driven optimizations, and provide transparent reports." },
             ].map((item) => (
-              <div key={item.step} className="relative rounded-xl border border-border bg-card p-6 text-center">
-                <div className="mb-3 text-3xl font-bold text-primary/20">{item.step}</div>
+              <div key={item.step} className="relative rounded-2xl border border-border bg-card p-8 text-center transition-all hover:shadow-lg hover:shadow-primary/5">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">{item.step}</div>
                 <h3 className="mb-2 text-lg font-semibold text-foreground">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </div>
@@ -177,11 +203,11 @@ const Index = () => {
               Real projects, real strategies, real impact.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {CASE_STUDIES.map((cs) => (
-              <Card key={cs.id} className="border-border">
+          <div className="grid gap-6 md:grid-cols-2">
+            {CASE_STUDIES.slice(0, 4).map((cs) => (
+              <Card key={cs.id} className="border-border transition-all hover:shadow-lg hover:shadow-primary/5">
                 <CardContent className="p-6">
-                  <span className="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                  <span className="mb-3 inline-block rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
                     {cs.industry}
                   </span>
                   <h3 className="mb-2 text-lg font-semibold text-foreground">{cs.title}</h3>
@@ -231,14 +257,19 @@ const Index = () => {
           <h2 className="mb-4 text-3xl font-bold text-primary-foreground">
             Ready to Grow Your Business?
           </h2>
-          <p className="mb-8 text-primary-foreground/80">
+          <p className="mb-8 text-primary-foreground/80 max-w-xl mx-auto">
             Let's discuss how strategic digital advertising can drive results for your business.
           </p>
-          <Button size="lg" variant="secondary" asChild>
-            <Link to="/contact">
-              Book a Consultation <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button size="lg" variant="secondary" asChild>
+              <Link to="/contact">
+                Book a Consultation <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+            <a href={`tel:${COMPANY.phone}`} className="inline-flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-sm font-medium transition-colors">
+              <Phone className="h-4 w-4" /> {COMPANY.phone}
+            </a>
+          </div>
         </div>
       </section>
     </Layout>

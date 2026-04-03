@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/content";
-import { Shield, ArrowRight } from "lucide-react";
+import { Shield, ArrowRight, Phone } from "lucide-react";
 
 const CompanyInfo = () => {
   return (
@@ -29,13 +29,14 @@ const CompanyInfo = () => {
       <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <div className="rounded-xl border border-border bg-card p-8 lg:p-10">
+            <div className="rounded-2xl border border-border bg-card p-8 lg:p-10 shadow-sm">
               <div className="space-y-6">
                 {[
                   { label: "Legal Business Name", value: COMPANY.legalName },
                   { label: "Registered Address", value: COMPANY.address },
                   { label: "Official Website", value: COMPANY.website },
                   { label: "Official Email", value: COMPANY.email, isEmail: true },
+                  { label: "Official Phone", value: COMPANY.phone, isPhone: true },
                   { label: "Nature of Business", value: COMPANY.nature },
                   {
                     label: "Services Offered",
@@ -47,6 +48,8 @@ const CompanyInfo = () => {
                     <dd className="text-foreground">
                       {item.isEmail ? (
                         <a href={`mailto:${item.value}`} className="text-primary hover:underline">{item.value}</a>
+                      ) : item.isPhone ? (
+                        <a href={`tel:${item.value}`} className="text-primary hover:underline">{item.value}</a>
                       ) : (
                         item.value
                       )}
@@ -54,15 +57,26 @@ const CompanyInfo = () => {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-8 rounded-xl bg-accent p-4 text-center">
+                <p className="text-sm text-accent-foreground font-medium">
+                  {COMPANY.owner}
+                </p>
+              </div>
             </div>
 
             <div className="mt-10 text-center">
               <p className="mb-4 text-sm text-muted-foreground">
                 For verification inquiries or additional information, please contact us directly.
               </p>
-              <Button asChild>
-                <Link to="/contact">Contact Us <ArrowRight className="ml-1 h-4 w-4" /></Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Button asChild>
+                  <Link to="/contact">Contact Us <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                </Button>
+                <a href={`tel:${COMPANY.phone}`} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="h-4 w-4" /> {COMPANY.phone}
+                </a>
+              </div>
             </div>
           </div>
         </div>

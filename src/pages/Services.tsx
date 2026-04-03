@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SERVICES } from "@/lib/content";
 import { ArrowRight, Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout as LayoutIcon } from "lucide-react";
+import servicesVisual from "@/assets/services-visual.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
   Facebook, Instagram, TrendingUp, PenTool, Palette, Target, Settings, Users, ShoppingCart, Layout: LayoutIcon,
@@ -21,11 +22,23 @@ const Services = () => {
 
       <section className="border-b border-border bg-card py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-4xl font-bold text-foreground">Our Services</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              End-to-end digital advertising services designed to help your business reach, engage, and convert your ideal customers.
-            </p>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <h1 className="mb-4 text-4xl font-bold text-foreground">Our Services</h1>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                End-to-end digital advertising services designed to help your business reach, engage, and convert your ideal customers.
+              </p>
+            </div>
+            <div className="hidden lg:block overflow-hidden rounded-2xl">
+              <img
+                src={servicesVisual}
+                alt="Digital advertising services overview"
+                width={1280}
+                height={640}
+                loading="lazy"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -33,28 +46,28 @@ const Services = () => {
       <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="space-y-8">
-            {SERVICES.map((service, i) => {
+            {SERVICES.map((service) => {
               const Icon = iconMap[service.icon] || Target;
               return (
-                <Card key={service.id} className="border-border overflow-hidden">
+                <Card key={service.id} className="border-border overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/5">
                   <CardContent className="p-6 lg:p-8">
                     <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent">
                         <Icon className="h-7 w-7 text-primary" />
                       </div>
                       <div className="flex-1 space-y-4">
                         <h2 className="text-2xl font-bold text-foreground">{service.title}</h2>
                         <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                         <div className="grid gap-4 sm:grid-cols-3">
-                          <div>
+                          <div className="rounded-lg bg-accent/50 p-4">
                             <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Who It's For</h4>
                             <p className="text-sm text-muted-foreground">{service.forWhom}</p>
                           </div>
-                          <div>
+                          <div className="rounded-lg bg-accent/50 p-4">
                             <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Expected Benefit</h4>
                             <p className="text-sm text-muted-foreground">{service.benefit}</p>
                           </div>
-                          <div>
+                          <div className="rounded-lg bg-accent/50 p-4">
                             <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">Our Approach</h4>
                             <p className="text-sm text-muted-foreground">{service.approach}</p>
                           </div>

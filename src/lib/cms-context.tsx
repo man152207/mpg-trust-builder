@@ -27,6 +27,7 @@ interface CMSState {
   faqs: typeof FAQS;
   contactInfo: {
     email: string;
+    phone: string;
     address: string;
     website: string;
   };
@@ -63,6 +64,7 @@ const defaultState: CMSState = {
   faqs: FAQS,
   contactInfo: {
     email: COMPANY.email,
+    phone: COMPANY.phone,
     address: COMPANY.address,
     website: COMPANY.website,
   },
