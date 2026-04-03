@@ -64,6 +64,7 @@ const defaultState: CMSState = {
   faqs: FAQS,
   contactInfo: {
     email: COMPANY.email,
+    phone: COMPANY.phone,
     address: COMPANY.address,
     website: COMPANY.website,
   },
