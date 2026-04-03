@@ -395,6 +395,6 @@ export const NAV_LINKS = [
   { label: "Services", path: "/services" },
   { label: "Case Studies", path: "/case-studies" },
   { label: "Pricing", path: "/pricing" },
-  { label: "FAQ", path: "/faq" },
+  { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];
