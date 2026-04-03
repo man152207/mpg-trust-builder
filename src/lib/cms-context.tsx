@@ -27,6 +27,7 @@ interface CMSState {
   faqs: typeof FAQS;
   contactInfo: {
     email: string;
+    phone: string;
     address: string;
     website: string;
   };
