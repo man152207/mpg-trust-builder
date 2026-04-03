@@ -33,6 +33,7 @@ interface CMSState {
     website: string;
   };
   submissions: FormSubmission[];
+  blogPosts: BlogPost[];
 }
 
 interface CMSContextType {
