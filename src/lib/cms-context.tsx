@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { SERVICES, CASE_STUDIES, PRICING_PLANS, FAQS, COMPANY } from "@/lib/content";
+import { BlogPost, BLOG_POSTS } from "@/lib/blog-data";
 
 export interface PageStatus {
   status: "draft" | "published";
@@ -32,6 +33,7 @@ interface CMSState {
     website: string;
   };
   submissions: FormSubmission[];
+  blogPosts: BlogPost[];
 }
 
 interface CMSContextType {
@@ -40,6 +42,7 @@ interface CMSContextType {
   updateContactInfo: (info: CMSState["contactInfo"]) => void;
   updateFaqs: (faqs: typeof FAQS) => void;
   togglePageStatus: (slug: string) => void;
+  updateBlogPosts: (posts: BlogPost[]) => void;
 }
 
 const defaultPages: Record<string, PageStatus> = {
@@ -54,6 +57,7 @@ const defaultPages: Record<string, PageStatus> = {
   privacy: { status: "published", lastEdited: new Date().toISOString(), slug: "/privacy", metaTitle: "Privacy Policy", metaDescription: "Our privacy policy." },
   terms: { status: "published", lastEdited: new Date().toISOString(), slug: "/terms", metaTitle: "Terms & Conditions", metaDescription: "Terms of service." },
   cookies: { status: "published", lastEdited: new Date().toISOString(), slug: "/cookies", metaTitle: "Cookie Policy", metaDescription: "Cookie usage policy." },
+  blog: { status: "published", lastEdited: new Date().toISOString(), slug: "/blog", metaTitle: "Blog — Digital Marketing Insights", metaDescription: "Expert digital marketing insights and strategies." },
 };
 
 const defaultState: CMSState = {
@@ -72,6 +76,7 @@ const defaultState: CMSState = {
     { id: "1", name: "John Smith", email: "john@example.com", company: "Acme Corp", service: "Facebook Advertising", message: "Interested in running Facebook campaigns for our product launch.", date: "2025-01-15" },
     { id: "2", name: "Sarah Lee", email: "sarah@startup.io", company: "Startup IO", service: "Lead Generation", message: "We need help generating B2B leads.", date: "2025-01-18" },
   ],
+  blogPosts: BLOG_POSTS,
 };
 
 const CMS_STORAGE_KEY = "mpg_cms_state";
@@ -130,8 +135,12 @@ export const CMSProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, faqs }));
   };
 
+  const updateBlogPosts = (blogPosts: BlogPost[]) => {
+    setState((prev) => ({ ...prev, blogPosts }));
+  };
+
   return (
-    <CMSContext.Provider value={{ state, updatePage, updateContactInfo, updateFaqs, togglePageStatus }}>
+    <CMSContext.Provider value={{ state, updatePage, updateContactInfo, updateFaqs, togglePageStatus, updateBlogPosts }}>
       {children}
     </CMSContext.Provider>
   );

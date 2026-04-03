@@ -7,9 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   LayoutDashboard, FileText, Settings, MessageSquare, LogOut, Eye, EyeOff,
-  HelpCircle, ChevronLeft
+  HelpCircle, ChevronLeft, BookOpen, Plus, Trash2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -40,6 +41,7 @@ const AdminDashboard = () => {
               <Route path="pages" element={<PagesManager />} />
               <Route path="submissions" element={<SubmissionsViewer />} />
               <Route path="faqs" element={<FAQManager />} />
+              <Route path="blog" element={<BlogManager />} />
               <Route path="settings" element={<SettingsPage />} />
             </Routes>
           </div>
@@ -57,6 +59,7 @@ const AdminSidebar = () => {
     { to: `${base}/pages`, label: "Pages", icon: FileText },
     { to: `${base}/submissions`, label: "Submissions", icon: MessageSquare },
     { to: `${base}/faqs`, label: "FAQs", icon: HelpCircle },
+    { to: `${base}/blog`, label: "Blog", icon: BookOpen },
     { to: `${base}/settings`, label: "Settings", icon: Settings },
   ];
 
@@ -292,6 +295,144 @@ const FAQManager = () => {
                 <p className="text-xs text-muted-foreground mt-1">{faq.answer.slice(0, 120)}...</p>
               </div>
               <Button size="sm" variant="destructive" onClick={() => removeFaq(i)}>Remove</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Blog Manager
+const BlogManager = () => {
+  const { state, updateBlogPosts } = useCMS();
+  const { toast } = useToast();
+  const [posts, setPosts] = useState(state.blogPosts || []);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
+  const [metaDesc, setMetaDesc] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [category, setCategory] = useState("");
+  const [content, setContent] = useState("");
+  const [status, setStatus] = useState<"draft" | "published">("draft");
+
+  const resetForm = () => {
+    setEditingId(null);
+    setTitle("");
+    setSlug("");
+    setMetaDesc("");
+    setExcerpt("");
+    setCategory("");
+    setContent("");
+    setStatus("draft");
+  };
+
+  const startEdit = (post: typeof posts[0]) => {
+    setEditingId(post.id);
+    setTitle(post.title);
+    setSlug(post.slug);
+    setMetaDesc(post.metaDescription);
+    setExcerpt(post.excerpt);
+    setCategory(post.category);
+    setContent(post.content);
+    setStatus(post.status);
+  };
+
+  const savePost = () => {
+    if (!title.trim() || !slug.trim()) return;
+    let updated;
+    if (editingId) {
+      updated = posts.map((p) =>
+        p.id === editingId
+          ? { ...p, title, slug, metaDescription: metaDesc, excerpt, category, content, status }
+          : p
+      );
+    } else {
+      const newPost = {
+        id: Date.now().toString(),
+        title,
+        slug,
+        metaDescription: metaDesc,
+        excerpt,
+        category,
+        date: new Date().toISOString().split("T")[0],
+        readTime: `${Math.max(3, Math.ceil(content.split(" ").length / 200))} min read`,
+        status,
+        content,
+      };
+      updated = [...posts, newPost];
+    }
+    setPosts(updated);
+    updateBlogPosts(updated);
+    toast({ title: editingId ? "Blog post updated" : "Blog post created" });
+    resetForm();
+  };
+
+  const deletePost = (id: string) => {
+    const updated = posts.filter((p) => p.id !== id);
+    setPosts(updated);
+    updateBlogPosts(updated);
+    toast({ title: "Blog post deleted" });
+  };
+
+  const toggleStatus = (id: string) => {
+    const updated = posts.map((p) =>
+      p.id === id ? { ...p, status: p.status === "published" ? "draft" as const : "published" as const } : p
+    );
+    setPosts(updated);
+    updateBlogPosts(updated);
+    toast({ title: "Post status updated" });
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Blog Manager</h1>
+        <span className="text-sm text-muted-foreground">{posts.length} posts</span>
+      </div>
+
+      <Card>
+        <CardHeader><CardTitle className="text-lg">{editingId ? "Edit Post" : "Create New Post"}</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <Input value={title} onChange={(e) => { setTitle(e.target.value); if (!editingId) setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")); }} placeholder="Post title" />
+          <Input value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="post-slug" />
+          <Input value={metaDesc} onChange={(e) => setMetaDesc(e.target.value)} placeholder="Meta description" />
+          <Input value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="Short excerpt" />
+          <Input value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Category" />
+          <Select value={status} onValueChange={(v) => setStatus(v as "draft" | "published")}>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="draft">Draft</SelectItem>
+              <SelectItem value="published">Published</SelectItem>
+            </SelectContent>
+          </Select>
+          <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Post content (markdown-style)" rows={8} />
+          <div className="flex gap-2">
+            <Button onClick={savePost}><Plus className="mr-1 h-4 w-4" />{editingId ? "Update Post" : "Create Post"}</Button>
+            {editingId && <Button variant="ghost" onClick={resetForm}>Cancel</Button>}
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="space-y-3">
+        {posts.map((post) => (
+          <Card key={post.id}>
+            <CardContent className="flex items-center justify-between p-4">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-medium text-sm truncate">{post.title}</span>
+                  <Badge variant={post.status === "published" ? "default" : "secondary"}>{post.status}</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">/blog/{post.slug} · {post.date} · {post.category}</p>
+              </div>
+              <div className="flex gap-1 shrink-0">
+                <Button size="sm" variant="ghost" onClick={() => startEdit(post)}><Settings className="h-4 w-4" /></Button>
+                <Button size="sm" variant="ghost" onClick={() => toggleStatus(post.id)}>
+                  {post.status === "published" ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => deletePost(post.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+              </div>
             </CardContent>
           </Card>
         ))}

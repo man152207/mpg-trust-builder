@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { COMPANY, SERVICES, CASE_STUDIES, FAQS } from "@/lib/content";
+import { BLOG_POSTS } from "@/lib/blog-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   Facebook, Instagram, TrendingUp, PenTool, Target, Users, Share2, Megaphone,
@@ -249,6 +250,37 @@ const Index = () => {
           <div className="mt-8 text-center">
             <Button variant="outline" asChild>
               <Link to="/case-studies">View All Case Studies</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview */}
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="mb-4 text-3xl font-bold text-foreground">Latest Insights</h2>
+            <p className="text-muted-foreground">Expert strategies and tips from our marketing blog.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {BLOG_POSTS.filter(p => p.status === "published").slice(0, 3).map((post) => (
+              <Card key={post.id} className="group overflow-hidden border-border transition-all hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
+                <div className="aspect-[16/9] overflow-hidden bg-accent">
+                  <img src={`/blog/${post.slug}.jpg`} alt={post.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
+                </div>
+                <CardContent className="p-5">
+                  <span className="mb-2 inline-block rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">{post.category}</span>
+                  <h3 className="mb-2 text-sm font-semibold text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="outline" asChild>
+              <Link to="/blog">View All Articles</Link>
             </Button>
           </div>
         </div>
