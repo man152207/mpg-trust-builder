@@ -134,8 +134,12 @@ export const CMSProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, faqs }));
   };
 
+  const updateBlogPosts = (blogPosts: BlogPost[]) => {
+    setState((prev) => ({ ...prev, blogPosts }));
+  };
+
   return (
-    <CMSContext.Provider value={{ state, updatePage, updateContactInfo, updateFaqs, togglePageStatus }}>
+    <CMSContext.Provider value={{ state, updatePage, updateContactInfo, updateFaqs, togglePageStatus, updateBlogPosts }}>
       {children}
     </CMSContext.Provider>
   );
