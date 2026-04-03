@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { SERVICES, CASE_STUDIES, PRICING_PLANS, FAQS, COMPANY } from "@/lib/content";
+import { BlogPost, BLOG_POSTS } from "@/lib/blog-data";
 
 export interface PageStatus {
   status: "draft" | "published";
