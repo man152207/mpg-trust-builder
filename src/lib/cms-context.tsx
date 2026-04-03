@@ -75,6 +75,7 @@ const defaultState: CMSState = {
     { id: "1", name: "John Smith", email: "john@example.com", company: "Acme Corp", service: "Facebook Advertising", message: "Interested in running Facebook campaigns for our product launch.", date: "2025-01-15" },
     { id: "2", name: "Sarah Lee", email: "sarah@startup.io", company: "Startup IO", service: "Lead Generation", message: "We need help generating B2B leads.", date: "2025-01-18" },
   ],
+  blogPosts: BLOG_POSTS,
 };
 
 const CMS_STORAGE_KEY = "mpg_cms_state";
