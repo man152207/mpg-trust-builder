@@ -59,6 +59,7 @@ const AdminSidebar = () => {
     { to: `${base}/pages`, label: "Pages", icon: FileText },
     { to: `${base}/submissions`, label: "Submissions", icon: MessageSquare },
     { to: `${base}/faqs`, label: "FAQs", icon: HelpCircle },
+    { to: `${base}/blog`, label: "Blog", icon: BookOpen },
     { to: `${base}/settings`, label: "Settings", icon: Settings },
   ];
 
