@@ -7,7 +7,8 @@ export const COMPANY = {
   tagline: "Performance-Focused Digital Advertising for Growing Businesses",
   description: "A Wyoming-registered digital advertising and marketing services company specializing in Facebook Ads, Instagram Ads, creative strategy, and performance marketing.",
   address: "30 N Gould St Ste R, Sheridan, WY 82801, USA",
-  email: "info@adsmpg.com",
+  email: "admin@adsmpg.com",
+  phone: "+1 315 961 3832",
   website: "www.adsmpg.com",
   nature: "Digital advertising and marketing services",
   founded: "Wyoming, USA",
@@ -119,34 +120,44 @@ export const SERVICES = [
 
 export const CASE_STUDIES = [
   {
+    id: "tourism-travel",
+    industry: "Tourism & Travel",
+    title: "Scaling a Travel Agency's Online Presence",
+    objective: "Increase tour bookings and brand awareness for a travel and tours company through targeted social media advertising.",
+    solution: "Developed a multi-platform Facebook and Instagram campaign strategy featuring destination visuals, lead generation forms, and retargeting sequences for website visitors.",
+    services: ["Facebook Advertising", "Instagram Advertising", "Creative Design for Ads", "Lead Generation Campaigns"],
+    result: "Improved booking inquiries and expanded reach to new audience segments through refined targeting and creative optimization.",
+    platforms: ["Facebook Ads", "Instagram Ads"],
+  },
+  {
     id: "ecommerce-fashion",
     industry: "E-commerce / Fashion",
-    title: "Scaling an Online Fashion Brand",
-    objective: "Increase online sales and expand customer base through targeted social media advertising.",
-    solution: "Developed a multi-phase Facebook and Instagram campaign strategy with audience segmentation, dynamic product ads, and retargeting sequences.",
-    services: ["Facebook Advertising", "Instagram Advertising", "Audience Targeting", "Creative Design"],
-    result: "Improved overall sales volume and reduced customer acquisition cost through refined targeting and creative optimization.",
+    title: "E-commerce Sales Boost for a Clothing Brand",
+    objective: "Increase online sales and expand customer base through targeted social media advertising for a fashion e-commerce store.",
+    solution: "Built a full-funnel campaign with product catalog ads, dynamic retargeting, and audience segmentation based on purchase behavior and interests.",
+    services: ["Facebook Advertising", "Instagram Advertising", "Audience Targeting", "E-commerce Advertising Support"],
+    result: "Improved overall sales volume and reduced customer acquisition cost through refined targeting and creative testing.",
     platforms: ["Facebook Ads", "Instagram Ads"],
+  },
+  {
+    id: "education-consultancy",
+    industry: "Education",
+    title: "Education Consultancy Ad Funnel Design",
+    objective: "Generate qualified leads for an education consultancy through a structured advertising funnel.",
+    solution: "Created a lead generation funnel with awareness campaigns, consideration-stage content, and lead form ads with follow-up sequences.",
+    services: ["Lead Generation Campaigns", "Ad Copywriting", "Campaign Setup & Optimization", "Audience Targeting"],
+    result: "Established a reliable lead pipeline with improved lead quality and lower cost per inquiry over successive campaign cycles.",
+    platforms: ["Facebook Ads"],
   },
   {
     id: "local-service-business",
     industry: "Local Services",
-    title: "Lead Generation for a Service Business",
-    objective: "Generate consistent, qualified leads for a local service provider through digital advertising.",
-    solution: "Built a lead generation funnel with lead form ads, landing pages, and follow-up sequences. Implemented precise geographic and demographic targeting.",
+    title: "Lead Generation for a Local Service Provider",
+    objective: "Generate consistent, qualified leads for a local service business through digital advertising.",
+    solution: "Built a geo-targeted lead generation campaign with lead form ads, landing pages, and precise demographic targeting for the local service area.",
     services: ["Lead Generation Campaigns", "Ad Copywriting", "Campaign Setup & Optimization"],
-    result: "Established a reliable lead pipeline with improved lead quality and lower cost per lead over successive campaign cycles.",
+    result: "Established a reliable local lead pipeline with improved lead quality and consistent monthly inquiry volume.",
     platforms: ["Facebook Ads"],
-  },
-  {
-    id: "b2b-saas",
-    industry: "B2B / Technology",
-    title: "Building Awareness for a B2B Platform",
-    objective: "Increase brand awareness and generate demo requests for a B2B software platform.",
-    solution: "Created a content-driven advertising strategy combining thought-leadership creatives with targeted awareness and conversion campaigns.",
-    services: ["Performance Marketing Strategy", "Creative Design for Ads", "Ad Copywriting", "Audience Targeting"],
-    result: "Increased brand visibility within target markets and improved demo request volume through strategic creative and targeting refinements.",
-    platforms: ["Facebook Ads", "Instagram Ads"],
   },
 ];
 
@@ -244,7 +255,7 @@ export const FAQS = [
   },
   {
     question: "How do I get started working with MPG Solution LLC?",
-    answer: "Simply reach out through our contact form or email us at info@adsmpg.com. We'll schedule a consultation to understand your goals and recommend the best approach for your business.",
+    answer: "Simply reach out through our contact form, email us at admin@adsmpg.com, or call us at +1 315 961 3832. We'll schedule a consultation to understand your goals and recommend the best approach for your business.",
   },
   {
     question: "Do you provide creative support for ad campaigns?",
@@ -264,7 +275,7 @@ export const FAQS = [
   },
   {
     question: "How can I contact MPG Solution LLC?",
-    answer: "You can reach us via email at info@adsmpg.com, through the contact form on our website, or by visiting our office at 30 N Gould St Ste R, Sheridan, WY 82801, USA.",
+    answer: "You can reach us via email at admin@adsmpg.com, by phone at +1 315 961 3832, through the contact form on our website, or by visiting our office at 30 N Gould St Ste R, Sheridan, WY 82801, USA.",
   },
 ];
 

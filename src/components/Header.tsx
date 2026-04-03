@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import mpgLogo from "@/assets/mpg-logo.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -13,12 +14,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">M</span>
-          </div>
-          <span className="text-lg font-bold tracking-tight text-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            MPG Solution
-          </span>
+          <img src={mpgLogo} alt="MPG Solution" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
